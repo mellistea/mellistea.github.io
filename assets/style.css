@@ -269,7 +269,7 @@ code, pre {
 }
 
 /* мобильная версия */
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1300px) {
   /* Уменьшаем отступы и размеры шрифтов для лучшей читаемости */
   header, main, footer {
     padding: 10px;
