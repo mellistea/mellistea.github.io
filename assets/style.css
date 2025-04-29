@@ -351,4 +351,41 @@ code, pre {
     flex-direction: column;
     align-items: center; /* Центрируем содержимое по горизонтали */
   }
+  .index-heading {
+    font-size: 26px; /* Немного увеличим заголовок */
+    margin-top: 30px;
+    margin-bottom: 15px;
+  }
+
+  .fanfic-list {
+    gap: 20px; /* Увеличим отступ между карточками */
+  }
+
+  .fanfic-card {
+    padding: 20px; /* Увеличим внутренний отступ карточки */
+  }
+
+  .fanfic-title {
+    font-size: 20px; /* Увеличим заголовок фанфика */
+  }
+
+  .fanfic-details {
+    font-size: 1.0em; /* Увеличим детали фанфика */
+    width: 100%;
+  }
+
+  .tag {
+    font-size: 0.8em; /* Увеличим размер тегов */
+    padding: 4px 8px; /* Немного увеличим отступы в тегах */
+  }
+
+  .fanfic-description {
+    font-size: 1.0em; /* Увеличим размер описания */
+    width: 100%; /* Растягиваем описание на всю ширину карточки */
+  }
+
+  .ficbook-button-wrapper {
+    text-align: left; /* Выравниваем кнопку "Читать на Ficbook" влево */
+    margin-top: 10px; /* Добавим немного отступа сверху */
+  }
 }
