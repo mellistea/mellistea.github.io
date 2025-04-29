@@ -1,0 +1,14 @@
+title: "mellistea"
+description: "Простая коллекция фанфиков"
+baseurl: ""
+url: "https://mellistea.github.io/" # Подставишь своё
+markdown: kramdown
+kramdown:
+  input: GFM
+  hard_wrap: true
+theme: minima
+plugins:
+  - jekyll-feed
+collections:
+  posts:
+    output: true

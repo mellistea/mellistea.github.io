@@ -1,0 +1,201 @@
+---
+layout: default
+---
+<article>
+
+
+
+
+    <div class="post-meta-box">
+        <h2>{{ page.title }}</h2>
+        
+        {% if page.author %}
+          <p><strong>Автор:</strong>
+            {% if page.author_link %}
+              <a href="{{ page.author_link }}" target="_blank" rel="noopener">{{ page.author }}</a>
+            {% else %}
+              {{ page.author }}
+            {% endif %}
+          </p>
+        {% endif %}
+      
+        {% if page.rating %}
+          <p><strong>Рейтинг:</strong> {{ page.rating }}</p>
+        {% endif %}
+        {% if page.fandom %}
+          <p><strong>Фэндом:</strong> {{ page.fandom }}</p>
+        {% endif %}
+        {% if page.pairing %}
+          <p><strong>Пэйринг:</strong> {{ page.pairing }}</p>
+        {% endif %}
+        {% if page.size %}
+          <p><strong>Размер:</strong> {{ page.size }}</p>
+        {% endif %}
+        {% if page.status %}
+          <p><strong>Статус:</strong> {{ page.status }}</p>
+        {% endif %}
+        {% if page.tags %}
+          <p><strong>Метки:</strong> {{ page.tags }}</p>
+        {% endif %}
+        {% if page.description %}
+          <p><strong>Описание:</strong> {{ page.description }}</p>
+        {% endif %}
+        
+        {% if page.other_publications %}
+          <p><strong>Публикация на других ресурсах:</strong> {{ page.other_publications }}</p>
+        {% endif %}
+        
+        {% assign notes_content = page.notes | strip %}
+        {% assign notes_length = notes_content | size %}
+        {% if notes_length > 5 and notes_content != "|" %}
+        <p><strong>Примечания:</strong></p>
+        {% assign lines = page.notes | newline_to_br | split: '<br />' %}
+        {% for line in lines %}
+          {% assign line_stripped = line | strip %}
+          {% if line_stripped != "" %}
+          <p class="note-line">
+            {% assign words = line_stripped | split: ' ' %}
+            {% for word in words %}
+              {% assign clean = word | strip %}
+              {% if clean contains 'http://' or clean contains 'https://' %}
+                <a href="{{ clean }}" target="_blank" rel="noopener">{{ clean }}</a>
+              {% else %}
+                {{ clean }}
+              {% endif %}
+              {% unless forloop.last %} {% endunless %}
+            {% endfor %}
+          </p>
+          {% endif %}
+        {% endfor %}
+        {% endif %}
+      
+        {% if page.ficbook_link %}
+          <div class="ficbook-button-wrapper">
+            <a href="{{ page.ficbook_link }}" class="ficbook-button" target="_blank" rel="noopener">Читать на Ficbook</a>
+          </div>
+        {% endif %}
+    </div>
+      
+
+  
+  
+  
+    <div class="post-content">
+        <div class="post-content-inner">
+          {% comment %} Всегда выводим заголовок из метаданных {% endcomment %}
+          <h1>{{ page.title }}</h1>
+          
+          {% assign blocks = page.content | split: '</p>' %}
+          
+          {% for b in blocks %}
+            {% assign b_trimmed = b | strip %}
+            {% if b_trimmed == '' %}
+              {% continue %}
+            {% endif %}
+            
+            {% comment %} Пропускаем строку с ========== если она есть {% endcomment %}
+            {% if b_trimmed contains '==========' %}
+              {% continue %}
+              
+            {% else %}
+              {% assign b_clean = b_trimmed | replace: '<p>', '' %}
+              
+              {% comment %} Обработка чистых разделителей (отделенных пустыми строками) {% endcomment %}
+              {% if b_clean == '─── ⊹⊱✿⊰⊹ ───' %}
+                <p class="separator-center">─── ⊹⊱✿⊰⊹ ───</p>
+              
+              {% comment %} Обработка горизонтальных линий {% endcomment %}
+              {% elsif b_clean contains '<hr />' or b_clean contains '---' %}
+                {% assign b_processed = b_clean 
+                  | replace: '<hr />', '─── ⊹⊱✿⊰⊹ ───' 
+                  | replace: '---', '─── ⊹⊱✿⊰⊹ ───'
+                %}
+                
+                {% comment %} Если после разделителя есть текст, разделяем вручную {% endcomment %}
+                {% assign parts = b_processed | split: '─── ⊹⊱✿⊰⊹ ───' %}
+                
+                {% for part in parts %}
+                  {% assign part = part | strip %}
+                  {% if forloop.first == false %}
+                    <p class="separator-center">─── ⊹⊱✿⊰⊹ ───</p>
+                  {% endif %}
+                  
+                  {% if part != '' %}
+                    {% comment %} Нормальная обработка текста {% endcomment %}
+                    <p>{{ part }}</p>
+                  {% endif %}
+                {% endfor %}
+              
+              {% comment %} Основная обработка текста {% endcomment %}
+              {% else %}
+                {% assign temp_text = b_clean %}
+                
+                {% comment %} Замена всех типов кавычек на ёлочки {% endcomment %}
+                {% assign temp_text = temp_text 
+                  | replace: '"', '«»' | replace: '«»', '»' | replace_first: '»', '«'
+                  | replace: '“', '«' | replace: '”', '»'
+                  | replace: '‘', '«' | replace: '’', '»'
+                %}
+                
+                {% comment %} Остальные типографические замены {% endcomment %}
+                {% assign b_processed = temp_text 
+                  | replace: '-- ', '─ ' 
+                  | replace: '...', '…'
+                %}
+                
+                {% comment %} Обработка примечаний {% endcomment %}
+                {% if b_processed contains '───' %}
+                  {% assign parts = b_processed | split: '───' %}
+                  {% assign main_text = parts[0] | strip %}
+                  {% assign note_part = parts[1] | strip %}
+                  
+                  {% if note_part contains '_❧' %}
+                    {% assign note_lines = note_part | split: '_❧ ' %}
+                    {% assign note_content = note_lines[1] | strip | replace: '<br />', '' | replace: '</em>', '' | replace: '<em>', '' %}
+                    <p>
+                      {{ main_text }}
+                      <br>
+                      <span class="separator-inline">───</span>
+                      <br>
+                      <span class="note-inline"><em>❧ {{ note_content }}</em></span>
+                    </p>
+                  {% else %}
+                    <p>{{ b_processed }}</p>
+                  {% endif %}
+                
+                {% comment %} Обработка переносов строк {% endcomment %}
+                {% elsif b_processed contains '<br />' %}
+                  {% assign parts = b_processed | split: '<br />' %}
+                  {% assign first = true %}
+                  
+                  {% for line in parts %}
+                    {% assign text = line | strip %}
+                    {% if text == '' %}{% continue %}
+                    {% elsif text contains '⊹⊱✿⊰⊹' %}
+                      <p class="separator-center">{{ text }}</p>
+                    {% elsif first %}
+                      <p>{{ text }}</p>
+                      {% assign first = false %}
+                    {% else %}
+                      <div class="indent-line">{{ text }}</div>
+                    {% endif %}
+                  {% endfor %}
+                
+                {% comment %} Обычный текст {% endcomment %}
+                {% else %}
+                  <p>{{ b_processed }}</p>
+                {% endif %}
+              {% endif %}
+            {% endif %}
+          {% endfor %}
+        </div>
+      </div>
+  
+  
+  
+  
+  
+  
+  
+
+</article>

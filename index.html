@@ -1,0 +1,58 @@
+---
+layout: default
+---
+
+<h2 class="index-heading">Последние работы</h2>
+
+<div class="fanfic-list">
+  {% for post in site.posts %}
+    <div class="fanfic-card">
+      <h3 class="fanfic-title">
+        <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+      </h3>
+
+      <div class="fanfic-meta">
+        {% if post.rating %}
+          <span class="tag rating">{{ post.rating }}</span>
+        {% endif %}
+        {% if post.status %}
+          <span class="tag status">{{ post.status }}</span>
+        {% endif %}
+      </div>
+
+      <ul class="fanfic-details">
+        {% if post.author %}
+          <li><strong>Автор:</strong>
+            {% if post.author_link %}
+              <a href="{{ post.author_link }}" target="_blank" rel="noopener">{{ post.author }}</a>
+            {% else %}
+              {{ post.author }}
+            {% endif %}
+          </li>
+        {% endif %}
+        {% if post.fandom %}
+          <li><strong>Фэндом:</strong> {{ post.fandom }}</li>
+        {% endif %}
+        {% if post.pairing %}
+          <li><strong>Пэйринг:</strong> {{ post.pairing }}</li>
+        {% endif %}
+        {% if post.size %}
+          <li><strong>Размер:</strong> {{ post.size }}</li>
+        {% endif %}
+        {% if post.tags %}
+          <li><strong>Метки:</strong> {{ post.tags }}</li>
+        {% endif %}
+      </ul>
+
+      {% if post.description %}
+        <p class="fanfic-description">{{ post.description }}</p>
+      {% endif %}
+
+      {% if post.ficbook_link %}
+        <div class="ficbook-button-wrapper">
+          <a href="{{ post.ficbook_link }}" class="ficbook-button" target="_blank" rel="noopener">Читать на Ficbook</a>
+        </div>
+      {% endif %}
+    </div>
+  {% endfor %}
+</div>

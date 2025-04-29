@@ -1,0 +1,19 @@
+# Системные
+.DS_Store
+Thumbs.db
+
+# Jekyll временные/генерируемые
+_site/
+.jekyll-cache/
+.sass-cache/
+
+# Конфиденциальное или пользовательское
+*.swp
+*.swo
+*.log
+*.bak
+*.tmp
+
+# Личное
+_config.local.yml
+scripts/deploy.py

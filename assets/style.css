@@ -1,0 +1,234 @@
+/* ======== Цветовые переменные ======== */
+:root {
+  --bg-main: #1e1e1b;
+  --bg-secondary: #282824;
+  --text-main: #d8d3cc;
+  --text-muted: #b3afa9;
+  --text-accent: #b79771;
+  --accent-bg: #3a2f25;
+  --card-border: #6a5c4a;
+  --link-color: #a17d4b;
+  --link-hover: #f0c88b;
+  --code-bg: #2a2824;
+}
+
+/* ======== Основы тёмной темы ======== */
+body {
+  background-color: var(--bg-main);
+  color: var(--text-main);
+  font-family: "Georgia", "Times New Roman", serif;
+  margin: 0;
+  padding: 0;
+}
+
+/* ======== Ссылки ======== */
+a {
+  color: var(--link-color);
+  text-decoration: none;
+}
+a:hover {
+  color: var(--link-hover);
+  text-decoration: underline;
+}
+
+/* ======== Структура ======== */
+header, main, footer {
+  padding: 20px;
+}
+
+/* ======== Шапки ======== */
+h1, h2, h3 {
+  color: var(--text-accent);
+}
+
+/* ======== Контент ======== */
+.post-content {
+  display: flex;
+  justify-content: center;
+}
+.post-content-inner {
+  width: 60%;
+  max-width: 800px;
+  line-height: 1.75;
+  font-size: 18px;
+  text-align: justify;
+}
+.post-content-inner p {
+  text-indent: 2em;
+  margin: 0 0 1.2em 0;
+  line-height: 1.7;
+  color: var(--text-main);
+}
+.post-content-inner p.separator,
+.post-content-inner p.separator-left,
+.post-content-inner p.no-indent {
+  text-indent: 0;
+}
+.post-content-inner p.separator {
+  font-size: 16px;
+  text-align: center;
+  color: var(--text-muted);
+  margin: 1.5em 0;
+}
+.post-content-inner p.separator-left {
+  text-align: left;
+  color: var(--text-muted);
+}
+.post-content-inner p.no-indent {
+  text-align: left;
+}
+
+.indent-line {
+  display: block;
+  text-indent: 2em;
+}
+.post-content-inner div.indent-line {
+  text-indent: 2em;
+  margin: 0;
+  line-height: 1.7;
+}
+
+/* ======== Метаданные поста ======== */
+.post-meta-box {
+  background: var(--bg-secondary);
+  padding: 20px 30px;
+  border-left: 5px solid var(--text-accent);
+  margin: 0 auto 40px auto;
+  max-width: 800px;
+  border-radius: 8px;
+  box-shadow: 0 0 12px #00000030;
+  font-size: 16px;
+  line-height: 1.6;
+}
+.post-meta-box p {
+  margin: 0.4em 0;
+}
+.post-meta-box strong {
+  color: var(--link-color);
+}
+
+/* ======== Кнопка "ficbook" ======== */
+.ficbook-button-wrapper {
+  margin-top: 15px;
+  text-align: right;
+}
+.ficbook-button {
+  display: inline-block;
+  padding: 6px 14px;
+  background-color: var(--text-accent);
+  color: var(--bg-main);
+  font-weight: bold;
+  border-radius: 6px;
+  text-decoration: none;
+  transition: background-color 0.2s ease;
+  font-size: 0.9em;
+}
+.ficbook-button:hover {
+  background-color: var(--link-hover);
+  color: var(--bg-main); /* сохраняем читаемый текст при наведении */
+  text-decoration: none;
+}
+
+/* ======== Главная страница ======== */
+.index-heading {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 800px;
+  padding-bottom: 0.5em;
+  border-bottom: 2px solid #444;
+  font-size: 28px;
+  margin-top: 40px;
+  margin-bottom: 20px;
+}
+
+.fanfic-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  max-width: 800px;
+  margin: 0 auto 60px auto;
+}
+
+.fanfic-card {
+  background-color: var(--bg-secondary);
+  border-left: 4px solid var(--text-accent);
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.35);
+}
+
+.fanfic-title {
+  margin: 0 0 10px 0;
+  font-size: 20px;
+}
+.fanfic-title a {
+  color: var(--link-color);
+  font-weight: bold;
+}
+
+.fanfic-meta {
+  margin-bottom: 10px;
+}
+
+.fanfic-details {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 10px 0;
+  font-size: 0.95em;
+}
+.fanfic-details li {
+  margin-bottom: 0.3em;
+}
+.fanfic-details strong {
+  color: var(--link-color);
+}
+
+.fanfic-description {
+  font-style: italic;
+  color: var(--text-muted);
+  margin-top: 10px;
+}
+
+/* ======== Теги ======== */
+.tag {
+  display: inline-block;
+  font-size: 0.8em;
+  padding: 3px 8px;
+  border-radius: 4px;
+  margin-right: 8px;
+  background-color: #3a3a35;
+  color: var(--text-muted);
+}
+.tag.rating {
+  background-color: #5f4d3c;
+  color: #fff;
+}
+.tag.status {
+  background-color: #6a5c4a;
+  color: #fff;
+}
+
+/* ======== Footer ======== */
+footer {
+  text-align: center;
+  font-size: 0.8em;
+  margin-top: 40px;
+  padding: 20px;
+  background: var(--bg-secondary);
+  color: var(--text-muted);
+}
+
+/* ======== Code блоки ======== */
+code, pre {
+  background-color: var(--code-bg);
+  color: #eae6dd;
+  border-radius: 4px;
+  padding: 0.2em 0.4em;
+}
+
+.separator-center {
+  text-align: center;
+  margin: 1em 0; /* Отступы сверху и снизу */
+  color: #666!important;   /* Можно настроить цвет */
+  line-height: 6 !important; /* отступы сверху и снизу */
+}
