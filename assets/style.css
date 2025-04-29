@@ -10,6 +10,8 @@
   --link-color: #a17d4b;
   --link-hover: #f0c88b;
   --code-bg: #2a2824;
+  --text-width: 900px;
+  --info-card-width: 800px;
 }
 
 /* ======== Основы тёмной темы ======== */
@@ -48,7 +50,7 @@ h1, h2, h3 {
 }
 .post-content-inner {
   width: 60%;
-  max-width: 800px;
+  max-width: var(--text-width);
   line-height: 1.75;
   font-size: 18px;
   text-align: justify;
@@ -94,7 +96,7 @@ h1, h2, h3 {
   padding: 20px 30px;
   border-left: 5px solid var(--text-accent);
   margin: 0 auto 40px auto;
-  max-width: 800px;
+  max-width: var(--info-card-width);
   border-radius: 8px;
   box-shadow: 0 0 12px #00000030;
   font-size: 16px;
@@ -231,4 +233,122 @@ code, pre {
   margin: 1em 0; /* Отступы сверху и снизу */
   color: #666!important;   /* Можно настроить цвет */
   line-height: 6 !important; /* отступы сверху и снизу */
+}
+.text-controls {
+    position: fixed;
+    right: calc((100% - var(--text-width)) / 2 - 90px); /* Изменено на right */
+    bottom: 80px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    z-index: 10;
+}
+
+.text-controls button {
+    background-color: var(--bg-secondary);
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: var(--text-main);
+    transition: background-color 0.2s ease;
+}
+
+.text-controls button:hover {
+    background-color: var(--accent-bg);
+}
+
+.text-controls svg {
+    fill: var(--text-main);
+    width: 24px;
+    height: 24px;
+}
+
+/* мобильная версия */
+@media screen and (max-width: 768px) {
+  /* Уменьшаем отступы и размеры шрифтов для лучшей читаемости */
+  header, main, footer {
+    padding: 10px;
+  }
+
+  .post-content-inner {
+    width: 95%; /* Занимает большую часть ширины экрана */
+    font-size: 16px; /* Уменьшаем размер шрифта */
+  }
+
+  .post-content-inner p {
+    text-indent: 1.5em; /* Уменьшаем отступ параграфа */
+  }
+
+  .post-meta-box {
+    padding: 15px;
+    font-size: 14px;
+  }
+
+  .index-heading {
+    font-size: 24px; /* Уменьшаем размер заголовка */
+    margin-top: 30px;
+    margin-bottom: 15px;
+  }
+
+  .fanfic-list {
+    gap: 15px;
+  }
+
+  .fanfic-card {
+    padding: 15px;
+  }
+
+  .fanfic-title {
+    font-size: 18px;
+  }
+
+  .fanfic-details {
+    font-size: 0.9em;
+  }
+
+  .tag {
+    font-size: 0.7em;
+    padding: 2px 6px;
+  }
+
+  .text-controls {
+    position: static; /* Изменяем на static */
+    right: auto; /* Убираем позиционирование справа */
+    bottom: auto; /* Убираем позиционирование снизу */
+    margin-top: 10px; /* Добавляем отступ сверху */
+    margin-bottom: 10px; /* Добавляем отступ снизу */
+    display: flex;
+    flex-direction: row; /* Располагаем кнопки горизонтально */
+    justify-content: center; /* Выравниваем кнопки по центру */
+    align-items: center; /* Выравниваем по вертикали */
+    gap: 5px; /* Уменьшаем отступ между кнопками */
+    width: 100%; /* Занимает всю ширину контейнера */
+  }
+
+  .text-controls button {
+    width: 30px; /* Уменьшаем размер кнопок */
+    height: 30px;
+  }
+
+  /* Скрываем кнопку "стрелочка" */
+  .text-controls button:nth-child(3) { /* Предполагаем, что это третья кнопка */
+    display: none;
+  }
+
+  .text-controls svg {
+    width: 20px; /* Уменьшаем размер иконок */
+    height: 20px;
+  }
+
+  /* Дополнительные стили для карточки, чтобы вместить элементы управления */
+  .fanfic-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Центрируем содержимое по горизонтали */
+  }
 }
