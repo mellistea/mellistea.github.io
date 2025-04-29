@@ -36,7 +36,7 @@ layout: default
           <p><strong>Статус:</strong> {{ page.status }}</p>
         {% endif %}
         {% if page.tags %}
-          <p><strong>Метки:</strong> {{ page.tags }}</p>
+          <p><strong>Метки:</strong> {{ page.tags | join(", ") }}</p>
         {% endif %}
         {% if page.description %}
           <p><strong>Описание:</strong> {{ page.description }}</p>

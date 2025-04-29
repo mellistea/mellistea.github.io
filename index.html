@@ -40,7 +40,7 @@ layout: default
           <li><strong>Размер:</strong> {{ post.size }}</li>
         {% endif %}
         {% if post.tags %}
-          <li><strong>Метки:</strong> {{ post.tags }}</li>
+        <li><strong>Метки:</strong> {{ post.tags | join(", ") }}</li>
         {% endif %}
       </ul>
 

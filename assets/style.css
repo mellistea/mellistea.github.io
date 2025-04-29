@@ -372,7 +372,9 @@ code, pre {
   .fanfic-details {
     font-size: 1.0em; /* Увеличим детали фанфика */
     width: 100%;
+    
   }
+
 
   .tag {
     font-size: 0.8em; /* Увеличим размер тегов */
@@ -388,4 +390,5 @@ code, pre {
     text-align: left; /* Выравниваем кнопку "Читать на Ficbook" влево */
     margin-top: 10px; /* Добавим немного отступа сверху */
   }
+  
 }
