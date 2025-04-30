@@ -17,3 +17,4 @@ _site/
 # Личное
 _config.local.yml
 scripts/deploy.py
+scripts/update_md_and_deploy.py
