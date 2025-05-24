@@ -203,7 +203,11 @@ h1, h2, h3 {
   margin-right: 8px;
   background-color: #3a3a35;
   color: var(--text-muted);
+  margin-bottom: 4px;
 }
+li > .tag {
+    margin-right: 3px;
+  }
 .tag.rating {
   background-color: #5f4d3c;
   color: #fff;
@@ -270,6 +274,35 @@ code, pre {
     width: 24px;
     height: 24px;
 }
+
+.fanfic-details,
+.fanfic-title,
+.fanfic-description {
+  /* тень */
+  text-shadow: 2px 2px rgba(0, 0, 0, 0.41);
+}
+
+/* ======== Цвета рейтингов ======== */
+.tag.rating.rating-g    { background-color: #5f4d3c; }
+.tag.rating.rating-pg13 { background-color: #579a59; }
+.tag.rating.rating-r    { background-color: #ad7420; }
+.tag.rating.rating-nc17,
+.tag.rating.rating-nc21 { background-color: #f44336; }
+
+/* ======== Цвета статусов ======== */
+.tag.status.status-завершён {
+  background-color: #579a59; /* зелёный */
+  color: #fff;
+}
+.tag.status.status-впроцессе {
+  background-color: #ffeb3b; /* жёлтый */
+  color: #000;
+}
+.tag.status.status-заморожен {
+  background-color: #2196f3; /* синий */
+  color: #fff;
+}
+
 
 /* мобильная версия */
 @media screen and (max-width: 1300px) {
@@ -393,13 +426,5 @@ code, pre {
     text-align: left; /* Выравниваем кнопку "Читать на Ficbook" влево */
     margin-top: 10px; /* Добавим немного отступа сверху */
   }
-
-  .fanfic-details,
-  .fanfic-title,
-  .fanfic-description {
-    /* тень */
-    text-shadow: 2px 2px rgba(0, 0, 0, 0.41);
-  }
-
   
 }

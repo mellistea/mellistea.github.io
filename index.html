@@ -13,10 +13,10 @@ layout: default
 
       <div class="fanfic-meta">
         {% if post.rating %}
-          <span class="tag rating">{{ post.rating }}</span>
+        <span class="tag rating rating-{{ post.rating | downcase | replace: '.', '' | replace: '-', '' }}">{{ post.rating }}</span>
         {% endif %}
         {% if post.status %}
-          <span class="tag status">{{ post.status }}</span>
+        <span class="tag status status-{{ post.status | downcase | replace: ' ', '' }}">{{ post.status }}</span>
         {% endif %}
       </div>
 
@@ -40,7 +40,11 @@ layout: default
           <li><strong>Размер:</strong> {{ post.size }}</li>
         {% endif %}
         {% if post.tags %}
-        <li><strong>Метки:</strong> {{ post.tags | join(", ") }}</li>
+        <li><strong>Метки:</strong>
+          {% for tag in post.tags %}
+            <span class="tag">{{ tag }}</span>
+          {% endfor %}
+        </li>        
         {% endif %}
       </ul>
 

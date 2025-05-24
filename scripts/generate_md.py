@@ -5,7 +5,7 @@ from datetime import datetime
 # Папки
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 TXT_FOLDER = os.path.join(BASE_DIR, "../txt")
-POSTS_FOLDER = os.path.join(BASE_DIR, "../_posts")
+POSTS_FOLDER = os.path.join(BASE_DIR, "generated")
 
 # Убедимся, что папка для постов существует
 os.makedirs(POSTS_FOLDER, exist_ok=True)
