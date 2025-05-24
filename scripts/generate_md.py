@@ -3,8 +3,9 @@ import re
 from datetime import datetime
 
 # Папки
-TXT_FOLDER = "txt"
-POSTS_FOLDER = "_posts"
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+TXT_FOLDER = os.path.join(BASE_DIR, "../txt")
+POSTS_FOLDER = os.path.join(BASE_DIR, "../_posts")
 
 # Убедимся, что папка для постов существует
 os.makedirs(POSTS_FOLDER, exist_ok=True)
@@ -134,12 +135,13 @@ def generate_post(fields, original_filename):
     base_name = os.path.splitext(original_filename)[0]
     slug = slugify(base_name)
     filename = f"{today}-{slug}.md"
-
     output_path = os.path.join(POSTS_FOLDER, filename)
 
-    if os.path.exists(output_path):
-        print(f"[SKIP] Файл уже существует, пропуск: {output_path}")
-        return
+    # Проверяем, не существует ли уже файл с таким же слагом (независимо от даты)
+    for existing_file in os.listdir(POSTS_FOLDER):
+        if existing_file.endswith(".md") and existing_file.split("-", 3)[-1] == f"{slug}.md":
+            print(f"[SKIP] Уже существует файл с таким именем: {existing_file}")
+            return
 
     front_matter = f"""---
 layout: story
