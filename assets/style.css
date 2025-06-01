@@ -12,7 +12,7 @@
   --code-bg: #2a2824;
   --text-width: 900px;
   --info-card-width: 800px;
-  --fanfic-card-bg: linear-gradient(rgba(0, 0, 0, .39), rgba(0, 0, 0, .73)), url(fanfic-bg.jpg);
+  /* --fanfic-card-bg: linear-gradient(rgba(0, 0, 0, .39), rgba(0, 0, 0, .73)), url(fanfic-bg.jpg); */
 }
 
 /* ======== Основы тёмной темы ======== */
